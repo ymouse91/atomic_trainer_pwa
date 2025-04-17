@@ -1,86 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <title>Card & Number Selector</title>
-  <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#ff7e5f" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <link rel="apple-touch-icon" href="icon-192.png" />
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      text-align: center;
-      margin: 0;
-      background: linear-gradient(135deg, #ff7e5f, #feb47b);
-      min-height: 100vh;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-    h1 {
-      font-size: 24px;
-      text-shadow: 0 0 10px #fff, 0 0 20px #00d4ff;
-    }
-    .container {
-      width: 90%;
-      max-width: 400px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-      padding: 20px;
-      border-radius: 15px;
-      background: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
-    select, button {
-      font-size: 18px;
-      padding: 12px;
-      width: 100%;
-      border-radius: 10px;
-      border: none;
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    select {
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      background: rgba(0, 0, 0, 0.3);
-      color: white;
-      padding-right: 1.5em;
-    }
-    button {
-      background: linear-gradient(45deg, #ff7e5f, #feb47b);
-      font-weight: bold;
-    }
-    button:hover {
-      opacity: 0.8;
-    }
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 20px;
-      }
-      .container {
-        padding: 15px;
-      }
-      button {
-        font-size: 16px;
-        padding: 10px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Card & Number Selector</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            min-height: 100vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            text-shadow: 0 0 10px #fff, 0 0 20px #00d4ff;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        select, button {
+            font-size: 18px;
+            padding: 12px;
+            width: 100%;
+            border-radius: 10px;
+            border: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            padding-right: 1.5em;
+        }
+
+        button {
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            font-weight: bold;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 20px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            button {
+                font-size: 16px;
+                padding: 10px;
+            }
+        }
+    </style>
+    <div id="sparkleContainer"></div>
 </head>
 <body>
   <h1 id="datetime"></h1>
+
   <div class="container">
     <label for="cardDropdown">Select a Card:</label>
     <select id="cardDropdown"></select>
@@ -91,6 +97,7 @@
     <button onclick="randomizeCardAndNumber()">Randomize Card & Number</button>
     <div id="peek"></div>
   </div>
+
   <script src="script.js"></script>
   <script>
     if ("serviceWorker" in navigator) {
