@@ -1,6 +1,7 @@
 # Card & Number Selector (PWA)
 
 This is a fully installable PWA that works on Android and iOS.
+Note: Orange Sparcle version
 
 ## Features
 - Select cards and numbers
