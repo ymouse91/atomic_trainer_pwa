@@ -149,28 +149,32 @@ function randomizeCardAndNumber() {
     triggerSparkle();
 }
 
-function updatePeek() {
-    const selectedCard = cardDropdown.value;
-    const selectedNumber = parseInt(numberDropdown.value);
-    const ranges = cardRanges[selectedCard];
-    let peekText = "";
-    let desimaali = "";
-    ranges.forEach((range) => {
+    function updatePeek() {
+      const cardDropdown = document.getElementById('cardDropdown');
+      const numberDropdown = document.getElementById('numberDropdown');
+      const peek = document.getElementById('peek');
+
+      const selectedCard = cardDropdown.value;
+      const selectedNumber = parseInt(numberDropdown.value, 10);
+      const ranges = cardRanges[selectedCard] || [];
+      let peekText = "";
+
+      ranges.forEach((range) => {
         const rangeStart = range[0][0];
         const rangeEnd = range[0][1];
         const secretNumber = range[1];
+
         if (selectedNumber >= rangeStart && selectedNumber <= rangeEnd) {
-            if (secretNumber - selectedNumber === 0) {
-                desimaali = "0,00";
-            } else {
-                desimaali = ((secretNumber - selectedNumber) / 100).toFixed(2);
-            }
-            peekText = `Popularity of this combination is currently ${desimaali}${numberDropdown.value - (secretNumber - selectedNumber)}%`;
+          const diff = secretNumber - selectedNumber;
+          const xx = String(Math.abs(Math.floor(diff))).padStart(2, '0');
+          const yy = String(numberDropdown.value - diff).padStart(2, '0');
+          peekText = `Popularity of this combination is currently 0.${xx}${yy}%`;
         }
-    });
-    peek.textContent = peekText;
-    peek.classList.toggle('visible', peekText !== "");
-}
+      });
+      peek.textContent = peekText;
+      peek.classList.toggle('visible', peekText !== "");
+    }
+
 
 function triggerSparkle() {
     const sparkle = document.createElement('div');
