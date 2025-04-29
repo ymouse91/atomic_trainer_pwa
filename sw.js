@@ -1,4 +1,4 @@
-const CACHE_NAME = "card-app-cache-v1";
+const CACHE_NAME = "card-app-cache-v2";
 const urlsToCache = [
   "/",
   "/index.html",
@@ -12,10 +12,19 @@ const urlsToCache = [
 self.addEventListener("install", event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
-      return cache.addAll(urlsToCache);
+      return Promise.allSettled(
+        urlsToCache.map(url => cache.add(url))
+      ).then(results => {
+        results.forEach(result => {
+          if (result.status === "rejected") {
+            console.warn("Caching failed for:", result.reason);
+          }
+        });
+      });
     })
   );
 });
+
 self.addEventListener("fetch", event => {
   event.respondWith(
     caches.match(event.request).then(response => {
