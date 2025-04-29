@@ -6,7 +6,8 @@ const urlsToCache = [
   "/sw.js",
   "/icon-192.png",
   "/icon-512.png",
-  "/script.js"
+  "/script.js",
+  "/favicon.ico"
 ];
 self.addEventListener("install", event => {
   event.waitUntil(
