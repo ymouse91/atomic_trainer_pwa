@@ -1,7 +1,7 @@
 {
   "name": "Card & Number Selector",
   "short_name": "Card Picker",
-  "start_url": ".",
+  "start_url": "atomic_trainer_pwa",
   "display": "standalone",
   "background_color": "#ff7e5f",
   "theme_color": "#ff7e5f",
